@@ -1,0 +1,9 @@
+"AddonInfo"
+{
+	"addonSteamAppID"	"550"
+
+	"addonTitle"	"Caroline: Text-to-Speech Implementation for Source"
+
+	"addonAuthor"	"Pukt"
+	"addonAuthorSteamID"	"puktpunk"
+}
