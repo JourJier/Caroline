@@ -6,8 +6,6 @@ class Caroline.Parser
 	{
 		usable_characters = usable
 
-		usable_characters.append("unknown")
-
 		character_index = {}
 
 		# Establece un índice para cada etiqueta y carácter (convertido de UTF-8 a ANSI)
@@ -23,7 +21,7 @@ class Caroline.Parser
 	{
 		local result = []
 
-		foreach (char in str) result.append(character_index.rawin(char) ? character_index.rawget(char) : character_index.rawget("unknown"))
+		foreach (char in str) result.append(character_index.rawin(char) ? character_index.rawget(char) : null)
 
 		return result
 	}
