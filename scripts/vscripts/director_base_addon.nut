@@ -6,10 +6,12 @@ class Caroline.Parser
 	{
 		usable_characters = usable
 
+		usable_characters.append("unknown")
+
 		character_index = {}
 
-		# Establece un índice a un carácter válido (UTF-8 a ANSI)
-		foreach (char in usable) character_index[char] <- character_index.len()
+		# Establece un índice para cada etiqueta y carácter (convertido de UTF-8 a ANSI)
+		foreach (char in usable) character_index.rawset(char, character_index.len())
 	}
 
 	usable_characters = null
@@ -21,27 +23,10 @@ class Caroline.Parser
 	{
 		local result = []
 
-		# Obtiene el índice de un carácter (donde el cero representa un carácter inválido)
-		foreach (char in str) result.append(character_index.rawin(char) ? character_index[char] : 0)
+		foreach (char in str) result.append(character_index.rawin(char) ? character_index.rawget(char) : character_index.rawget("unknown"))
 
 		return result
 	}
 }
 
-class Caroline.Danse
-{
-	constructor (collec)
-	{
-
-	}
-}
-
-class Caroline.Model
-{
-	constructor (Parser, layers)
-	{
-
-	}
-}
-
-IncludeScript("debug/es-es/john")
+IncludeScript("lang/es-es/john")
