@@ -2,15 +2,15 @@
 
 class Caroline.Parser
 {
-	constructor (usable)
+	constructor (usable_characters)
 	{
-		usable_characters = usable
+		this.usable_characters = usable_characters
 
-		usable_characters.append("unknown")
+		this.usable_characters.append("unknown")
 
-		character_index = {}
+		this.character_index = {}
 
-		foreach (char in usable) character_index[char] <- character_index.len()
+		foreach (char in usable_characters) this.character_index[char] <- this.character_index.len()
 	}
 
 	usable_characters = null
@@ -34,9 +34,9 @@ class Caroline.Composer
 
 	}
 
-	function SetSound (id, sound)
+	function SetSound (id, Sound)
 	{
-		if (IsSoundPrecached(sound.file)) PrecacheSound(sound.file)
+		if (IsSoundPrecached(Sound.file)) PrecacheSound(Sound.file)
 	}
 
 	function GetSound (id)
@@ -45,12 +45,13 @@ class Caroline.Composer
 	}
 }
 
-class Caroline.Model
+function Caroline::CollectSound (str, Parser, Composer)
 {
-	constructor ()
-	{
+	local result = []
 
-	}
+
+
+	return result
 }
 
 IncludeScript("lang/es-es/john")

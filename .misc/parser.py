@@ -20,7 +20,7 @@ with open('.misc/lang/es-es/john/characters', 'r', encoding='utf-8', errors='ign
 
 	for line in file:
 
-		for char in get_character_sequence(line.strip()):
+		for char in get_character_sequence(line):
 
 			unique_characters.add(char)
 

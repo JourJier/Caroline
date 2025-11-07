@@ -9,8 +9,6 @@ Caroline.John.Composer <- Caroline.Composer()
 
 Caroline.John.Composer.SetSound("a-", { duration = 0.032, file = "caroline/es-es/john/rjigir0e3-3jgifi3.wav" })
 
-Caroline.John.Model <- null
-
 Caroline.John.Chat <-
 {
 	function OnGameEvent_player_say (event)
@@ -31,6 +29,8 @@ Caroline.John.Chat <-
 
 		# Ignora los mensajes en otros idiomas
 		if (lang != "spanish") return
+
+		foreach (Sound in Caroline.CollectSound(event.text, Caroline.John.Parser, Caroline.John.Composer)) printl(Sound)
 	}
 }
 
