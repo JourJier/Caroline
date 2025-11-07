@@ -6,9 +6,11 @@ class Caroline.Parser
 	{
 		usable_characters = usable
 
+		usable_characters.append("unknown")
+
 		character_index = {}
 
-		foreach (char in usable) character_index.rawset(char, character_index.len())
+		foreach (char in usable) character_index[char] <- character_index.len()
 	}
 
 	usable_characters = null
@@ -19,7 +21,7 @@ class Caroline.Parser
 	{
 		local result = []
 
-		foreach (char in str) result.append(character_index.rawin(char) ? character_index.rawget(char) : null)
+		foreach (char in str) result.append(char in character_index ? character_index[char] : character_index["unknown"])
 
 		return result
 	}
@@ -29,27 +31,23 @@ class Caroline.Composer
 {
 	constructor ()
 	{
-		sound_cache = {}
-	}
 
-	sound_cache = null
+	}
 
 	function SetSound (id, sound)
 	{
-		sound_cache.rawset(id, sound)
-
 		if (IsSoundPrecached(sound.file)) PrecacheSound(sound.file)
 	}
 
 	function GetSound (id)
 	{
-		if (sound_cache.rawin(id)) return sound_cache.rawget(id)
+
 	}
 }
 
 class Caroline.Model
 {
-	constructor (Parser, Composer)
+	constructor ()
 	{
 
 	}

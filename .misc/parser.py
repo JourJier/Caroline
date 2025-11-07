@@ -16,17 +16,17 @@ def get_character_sequence (value: str) -> list[int]:
 
 unique_characters = set()
 
-with open('.misc/lang/es-es/parser', 'r', encoding='utf-8', errors='ignore') as file:
+with open('.misc/lang/es-es/john/characters', 'r', encoding='utf-8', errors='ignore') as file:
 
 	for line in file:
 
-		for char in get_character_sequence(line):
+		for char in get_character_sequence(line.strip()):
 
 			unique_characters.add(char)
 
 	file.close()
 
-with open('.misc/lang/es-es/parser.chunk', 'w', encoding='utf-8', errors='ignore') as file:
+with open('.misc/lang/es-es/john/characters.chunk', 'w', encoding='utf-8', errors='ignore') as file:
 
 	file.write(', '.join(map(str, unique_characters)))
 
