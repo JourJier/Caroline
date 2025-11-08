@@ -1,8 +1,8 @@
-def get_character_sequence (value: str) -> list[int]:
+def get_character_sequence (t: str) -> list[int]:
 
 	result = list()
 
-	for char in value.encode('utf-8'):
+	for char in t.encode('utf-8'):
 
 		if char < 128:
 
@@ -16,18 +16,18 @@ def get_character_sequence (value: str) -> list[int]:
 
 unique_characters = set()
 
-with open('.misc/lang/es-es/john/characters', 'r', encoding='utf-8', errors='ignore') as file:
+with open('.misc/lang/es-es/john/usable_characters', 'r', encoding='utf-8', errors='ignore') as f:
 
-	for line in file:
+	for t in f:
 
-		for char in get_character_sequence(line):
+		for char in get_character_sequence(t):
 
 			unique_characters.add(char)
 
-	file.close()
+	f.close()
 
-with open('.misc/lang/es-es/john/characters.chunk', 'w', encoding='utf-8', errors='ignore') as file:
+with open('.misc/lang/es-es/john/usable_characters.chunk', 'w', encoding='utf-8', errors='ignore') as f:
 
-	file.write(', '.join(map(str, unique_characters)))
+	f.write(', '.join(map(str, unique_characters)))
 
-	file.close()
+	f.close()

@@ -2,26 +2,33 @@
 
 class Caroline.Parser
 {
-	constructor (usable_characters)
+	constructor (usable)
 	{
-		this.usable_characters = usable_characters
+		usable_characters = usable
 
-		this.usable_characters.append("unknown")
+		character_index = {}
 
-		this.character_index = {}
-
-		foreach (char in usable_characters) this.character_index[char] <- this.character_index.len()
+		foreach (char in usable_characters) character_index[char] <- character_index.len()
 	}
 
 	usable_characters = null
 
 	character_index = null
 
-	function CollectCharacterIndex (str)
+	function CollectCharacterIndex (t)
 	{
 		local result = []
 
-		foreach (char in str) result.append(char in character_index ? character_index[char] : character_index["unknown"])
+		foreach (char in t) result.append(char in character_index ? character_index[char] : -1)
+
+		return result
+	}
+
+	function GetCharacters (collec)
+	{
+		local result = []
+
+		foreach (i in collec) result.append(i >= 0 ? usable_characters[i] : null)
 
 		return result
 	}
@@ -29,27 +36,22 @@ class Caroline.Parser
 
 class Caroline.Composer
 {
-	constructor ()
+	constructor (collec)
 	{
+		foreach (sound in collec)
+		{
 
-	}
 
-	function SetSound (id, Sound)
-	{
-		if (IsSoundPrecached(Sound.file)) PrecacheSound(Sound.file)
-	}
-
-	function GetSound (id)
-	{
-
+			if (IsPrecachedSound(sound.f)) PrecacheSound(sound.f)
+		}
 	}
 }
 
-function Caroline::CollectSound (str, Parser, Composer)
+function Caroline::Speech (t, Parser)
 {
+	local char_seq = Parser.CollectCharacterIndex(t)
+
 	local result = []
-
-
 
 	return result
 }
